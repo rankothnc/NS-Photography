@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# Name Of The Site: Northern Sports Academy
+# Name Of The Site: Nuwan Siriwardhana photography
 
 ## Features of the project:
 * It's a website of A sports Academy.
