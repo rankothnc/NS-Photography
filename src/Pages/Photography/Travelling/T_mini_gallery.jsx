@@ -12,7 +12,7 @@ const MiniGallery = () => {
       id: 1,
       src: im1,
       title: "Wildlife Gallery",
-      desc: "Explore breathtaking wildlife photos.",
+      desc: "I bring your vision to life through my lens, offering personalized photography services that reflect your unique story. Each moment is captured with creativity and precision, ensuring that your memories are preserved just the way you imagined. Because your moments are as important to me as they are to you...",
     },
     {
       id: 2,
@@ -63,7 +63,7 @@ const MiniGallery = () => {
           <button onClick={() => navigateImages(-1)}>&lt;</button>
           <img className="main-image" src={currentImage} alt={gallery.title} />
           <div className="description">
-            <h2>{gallery.title}</h2>
+            <h2 className="galleryTitle">{gallery.title}</h2>
             <p>{gallery.desc}</p>
           </div>
         </div>

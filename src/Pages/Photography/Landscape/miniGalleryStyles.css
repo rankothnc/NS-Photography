@@ -19,7 +19,7 @@
 }
 
 .carousel .main-image {
-  width: 100%;
+  width: 70%;
   max-height: 400px;
   object-fit: cover;
 }
@@ -60,3 +60,9 @@
   text-align: left;
   font-family: Arial, sans-serif;
 }
+
+.galleryTitle{
+  font-size: 30px;
+  color: red;
+}
+
