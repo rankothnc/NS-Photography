@@ -1,0 +1,83 @@
+[
+    {
+      "id": 1,
+      "name": "Wildlife",
+      "description": "Join our football program and enhance your soccer skills. Suitable for all ages and skill levels.",
+      "image1": "../src/assets/Home_Photo/Photography/Wildlife.jpg",
+      "schedule": "Mondays, Wednesdays, and Fridays from 4 PM to 6 PM",
+      "coaches": [
+        {
+          "name": "John Smith",
+          "image": "john_smith.jpg"
+        },
+        {
+          "name": "Maria Rodriguez",
+          "image": "maria_rodriguez.jpg"
+        }
+      ],
+      "price": 150,
+      "duration": "10 weeks",
+      "availableSeats": 15
+    },
+    {
+      "id": 2,
+      "name": "Landscape",
+      "description": "Learn the art of cricket with our experienced coaches. Suitable for beginners and advanced players.",
+      "image1": "../src/assets/Home_Photo/Photography/Landscape.jpg",
+      "schedule": "Tuesdays and Thursdays from 5 PM to 7 PM",
+      "coaches": [
+        {
+          "name": "David Wilson",
+          "image": "david_wilson.jpg"
+        },
+        {
+          "name": "Sara Khan",
+          "image": "sara_khan.jpg"
+        }
+      ],
+      "price": 120,
+      "duration": "8 weeks",
+      "availableSeats": 12
+    },
+    {
+      "id": 3,
+      "name": "Location",
+      "description": "Improve your tennis skills with professional training. All skill levels are welcome.",
+      "image1": "../src/assets/Home_Photo/Photography/Location.jpg",
+      "schedule": "Wednesdays and Saturdays from 3 PM to 5 PM",
+      "coaches": [
+        {
+          "name": "Michael Brown",
+          "image": "michael_brown.jpg"
+        },
+        {
+          "name": "Linda Johnson",
+          "image": "linda_johnson.jpg"
+        }
+      ],
+      "price": 130,
+      "duration": "9 weeks",
+      "availableSeats": 14
+    },
+    {
+      "id": 4,
+      "name": "Travelling",
+      "description": "Enjoy the fast-paced game of badminton. Suitable for players of all ages.",
+      "image1": "../src/assets/Home_Photo/Photography/Travelling.jpg",
+      "schedule": "Mondays and Fridays from 6 PM to 8 PM",
+      "coaches": [
+        {
+          "name": "Chris Anderson",
+          "image": "chris_anderson.jpg"
+        },
+        {
+          "name": "Sophie White",
+          "image": "sophie_white.jpg"
+        }
+      ],
+      "price": 110,
+      "duration": "8 weeks",
+      "availableSeats": 16
+    }
+  ]
+

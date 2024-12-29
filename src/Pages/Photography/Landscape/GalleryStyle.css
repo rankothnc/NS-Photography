@@ -1,0 +1,133 @@
+/* CENTER THE CAMERA BUTTON*/
+
+
+/* Gallery Grid Container */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between cards */
+  padding: 50px;
+  box-sizing: border-box;
+  margin: auto;
+  opacity: 0; /* Initial opacity for fade-in */
+  transition: opacity 0.8s ease-in;
+}
+
+.gallery-container.loaded {
+  opacity: 1; /* Fade-in when loaded */
+}
+
+/* Card Styling */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  opacity: 0; /* Initially hidden */
+  animation: cardEntry 0.8s ease-in-out forwards; /* Apply entry animation */
+  transform: scale(1); /* Ensure this transform remains for hover */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Add animation delay to cards for staggered effect */
+.card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.card:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+/* Keyframes for card entry animation */
+@keyframes cardEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(5deg); /* Start small and rotated */
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.02) rotate(-2deg); /* Overshoot effect */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0); /* Final state */
+  }
+}
+
+/* Card Hover - Popup Effect */
+.card:hover {
+  transform: scale(1.05); /* Popup effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Image Container */
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: filter 0.3s ease, transform 0.4s ease;
+}
+
+.card:hover .image-container img {
+  filter: brightness(0.7);
+  transform: scale(1.1);
+}
+
+/* Button Styling - Slide in from Left */
+.view-gallery-btn {
+  position: absolute;
+  bottom: 10px; /* Align at bottom */
+  right: 10px; /* Align to the right */
+  transform: scale(0.8); /* Start with a smaller size */
+  opacity: 0; /* Initially hidden */
+  background-color: rgba(255, 255, 255, 0.833);
+  color: #16A34A;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+  justify-content: center;
+  display: flex;
+  transition: transform 0.4s ease, opacity 0.4s ease, background-color 0.3s ease;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.view-gallery-btn span.material-icons {
+  margin: 0; /* Remove any extra margins */
+  font-size: 20px; /* Adjust icon size if needed */
+  margin-left: 4px;
+}
+
+/* Button Hover Effect */
+.view-gallery-btn:hover {
+  transform: scale(1.1); /* Slight scale effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Show Button on Card Hover */
+.card:hover .view-gallery-btn {
+  opacity: 1; /* Make button visible */
+  transform: scale(1); /* Scale to normal size */
+}
+
+/* Description Styling */
+.description {
+  padding: 15px;
+  text-align: center;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
