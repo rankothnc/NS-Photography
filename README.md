@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Name Of The Site: Northern Sports Academy
 
 ## Features of the project:
@@ -13,3 +14,6 @@
 ***
 ### Here is the live link of the project:
 Click here: [Northern Sports Academy](https://react-task-d8d0a.web.app)
+=======
+# NS-Photography
+>>>>>>> 1845d5ba7b233d059a2a3121c4f5556c598dbb70
