@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { motion } from "framer-motion";
 import logo from "../../../assets/logo/logo.png";
@@ -7,6 +7,7 @@ import rlogo from "../../../assets/logo/rlogo.png";
 import useReadingProgress from "../../../Hooks/useReadingProgress";
 
 const Navbar = () => {
+  const location = useLocation();
   const user = null;
   const [activeNav, setActiveNav] = useState("#home");
   const completion = useReadingProgress();
@@ -40,59 +41,38 @@ const Navbar = () => {
   const navOptions = (
     <>
       <li>
-        <a
-          href="#home"
-          className={activeNav === "#home" ? " active_link" : ""}
-          onClick={() => setActiveNav("#home")}
+        <Link
+          to="/"
+          className={location.pathname === "/" ? " active_link" : ""}
         >
           Home
-        </a>
+        </Link>
       </li>
       <li>
-        <a
-          href="#aboutus"
-          className={activeNav === "#aboutus" ? " active_link" : ""}
-          onClick={() => setActiveNav("#aboutus")}
+        <Link
+          to="/aboutus"
+          className={location.pathname === "/aboutus" ? " active_link" : ""}
         >
           About Us
-        </a>
+        </Link>
       </li>
       <li>
-        <a
-          href="#photography"
-          className={activeNav === "#photography" ? " active_link" : ""}
-          onClick={() => setActiveNav("#photography")}
+        <Link
+          to="/photography"
+          className={location.pathname === "/photography" ? " active_link" : ""}
         >
           Photography
-        </a>
+        </Link>
       </li>
-      {/* <li>
-        <a
-          href="#facilities"
-          className={activeNav === "#facilities" ? " active_link" : ""}
-          onClick={() => setActiveNav("#facilities")}
-        >
-          Facilities
-        </a>
-      </li> */}
-      {/* <li>
-        <a
-          href="#instructors"
-          className={activeNav === "#instructors" ? " active_link" : ""}
-          onClick={() => setActiveNav("#instructors")}
-        >
-          Instructors
-        </a>
-      </li> */}
+      
 
       <li>
-        <a
-          href="#contactus"
-          className={activeNav === "#contactus" ? " active_link" : ""}
-          onClick={() => setActiveNav("#contactus")}
+        <Link
+          to="/contactus"
+          className={location.pathname === "/contactus" ? " active_link" : ""}
         >
           Contact Us
-        </a>
+        </Link>
       </li>
       
     </>
