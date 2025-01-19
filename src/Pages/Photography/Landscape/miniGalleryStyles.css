@@ -67,3 +67,8 @@
   color: red;
 }
 
+button, [role="button"] {
+  cursor: pointer;
+  position: relative;
+  align-self: center;
+}

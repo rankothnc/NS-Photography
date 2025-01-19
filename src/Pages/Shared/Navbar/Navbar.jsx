@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import logo from "../../../assets/logo/logo.png";
 import rlogo from "../../../assets/logo/rlogo.png";
 import useReadingProgress from "../../../Hooks/useReadingProgress";
+import { HashLink } from "react-router-hash-link";
 
 const Navbar = () => {
   const location = useLocation();
@@ -38,45 +39,69 @@ const Navbar = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  /* update activeNav based on scroll position */
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+    const handleScroll = () => {
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+          setActiveNav(`#${section.id}`);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const navOptions = (
     <>
       <li>
-        <Link
-          to="/"
-          className={location.pathname === "/" ? " active_link" : ""}
+        <HashLink
+          smooth
+          to="/#home"
+          className={activeNav === "#home" ? "active_link" : ""}
+          onClick={() => setActiveNav("#home")}
         >
           Home
-        </Link>
+        </HashLink>
       </li>
       <li>
-        <Link
-          to="/aboutus"
-          className={location.pathname === "/aboutus" ? " active_link" : ""}
+        <HashLink
+          smooth
+          to="/#aboutus"
+          className={activeNav === "#aboutus" ? "active_link" : ""}
+          onClick={() => setActiveNav("#aboutus")}
         >
           About Us
-        </Link>
+        </HashLink>
       </li>
       <li>
-        <Link
-          to="/photography"
-          className={location.pathname === "/photography" ? " active_link" : ""}
+        <HashLink
+          smooth
+          to="/#photography"
+          className={activeNav === "#photography" ? "active_link" : ""}
+          onClick={() => setActiveNav("#photography")}
         >
           Photography
-        </Link>
+        </HashLink>
       </li>
-      
-
       <li>
-        <Link
-          to="/contactus"
-          className={location.pathname === "/contactus" ? " active_link" : ""}
+        <HashLink
+          smooth
+          to="/#contactus"
+          className={activeNav === "#contactus" ? "active_link" : ""}
+          onClick={() => setActiveNav("#contactus")}
         >
           Contact Us
-        </Link>
+        </HashLink>
       </li>
-      
     </>
   );
+
   return (
     <>
       {/* for small display */}
@@ -84,7 +109,7 @@ const Navbar = () => {
         <img className="w-20" src={logo} alt="logo" />
       </div>
       <div
-        className={`navbar top-0 transition-all ease-out duration-300  text-white lg:fixed z-50 py-3 md:px-8 ${
+        className={`navbar top-0 transition-all ease-out duration-300 text-white lg:fixed z-50 py-3 md:px-8 ${
           navbarBg !== "transparent" ? "navbar_bg" : "lg:py-4 py-5"
         }`}
       >

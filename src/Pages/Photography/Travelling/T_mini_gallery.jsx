@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import im1 from "../../../assets/Home_Photo/Photography/WildLife.jpg";
 import im2 from "../../../assets/Home_Photo/Photography/Location.jpg";
 import "../Landscape/miniGalleryStyles.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; 
 
 const MiniGallery = () => {
   const { id } = useParams();
@@ -60,12 +61,18 @@ const MiniGallery = () => {
     <div className="detailed-gallery">
       <div className="carousel-container">
         <div className="carousel">
-          <button onClick={() => navigateImages(-1)}>&lt;</button>
+        <button onClick={() => navigateImages(-1)}>
+            <FaChevronLeft /> {/* Left arrow icon */}
+          </button>
           <img className="main-image" src={currentImage} alt={gallery.title} />
           <div className="description">
             <h2 className="galleryTitle">{gallery.title}</h2>
             <p>{gallery.desc}</p>
           </div>
+          
+      <button onClick={() => navigateImages(1)}>
+        <FaChevronRight /> {/* Right arrow icon */}
+      </button>
         </div>
         <div className="thumbnails">
           {images.map((image) => (
@@ -82,7 +89,6 @@ const MiniGallery = () => {
         </div>
       </div>
 
-      <button onClick={() => navigateImages(1)}>&gt;</button>
     </div>
   );
 };
