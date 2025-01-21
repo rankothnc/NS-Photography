@@ -34,13 +34,22 @@ const MiniGallery = () => {
   }
 
   const handleThumbnailClick = (src, title, desc) => {
-    setCurrentImage(src);
-    setCurrentTitle(title);
-    setCurrentDesc(desc);
+    setAnimationClass("slide-exit-to-left");
+    setTimeout(()=>{
+      setCurrentImage(src);
+      setCurrentTitle(title);
+      setCurrentDesc(desc);
+      setAnimationClass("slide-enter-from-right");
+      setTimeout(()=>setAnimationClass(""),500);
+    },500);    
   };
 
   const navigateImages = (direction) => {
-    setAnimationClass(direction === 1 ? "slide-enter" : "slide-exit");
+    const exitClass = direction === 1 ? "slide-exit-to-right" : "slide-exit-to-left";
+    const enterClass = direction === 1 ? "slide-enter-from-left" : "slide-enter-from-right";
+
+    setAnimationClass(exitClass);
+
     setTimeout(() => {
       const currentIndex = images.findIndex(
         (image) => image.src === currentImage
@@ -50,7 +59,8 @@ const MiniGallery = () => {
       setCurrentImage(images[nextIndex].src);
       setCurrentTitle(images[nextIndex].title);
       setCurrentDesc(images[nextIndex].desc);
-      setAnimationClass(""); // Reset animation class
+      setAnimationClass(enterClass); // Reset animation class
+      setTimeout(()=>setAnimationClass(""),500);
     }, 500); // Matches the CSS transition duration
   };
 
@@ -66,7 +76,7 @@ const MiniGallery = () => {
             src={currentImage}
             alt={currentTitle}
           />
-          <div className="description">
+          <div className={`description ${animationClass}`}>
             <h2 className="galleryTitle">{currentTitle}</h2>
             <p>{currentDesc}</p>
           </div>
