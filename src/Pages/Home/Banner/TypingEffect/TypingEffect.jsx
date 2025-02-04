@@ -33,7 +33,7 @@ const TypingEffect = () => {
     <div className="text-white">
       <h4 className="md:text-6xl text-s">
         {location.pathname === '/' && (
-          <span style={{ fontSize: '4rem', fontFamily: 'revert-layer' }}>
+          <span style={{ fontSize: '4rem', fontFamily: 'Roboto, sans-serif' }}>
             NUWAN SIRIWARDHANA
           </span>
         )}

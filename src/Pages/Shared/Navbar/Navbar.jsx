@@ -6,6 +6,7 @@ import logo from "../../../assets/logo/logo.png";
 import rlogo from "../../../assets/logo/rlogo.png";
 import useReadingProgress from "../../../Hooks/useReadingProgress";
 import { HashLink } from "react-router-hash-link";
+import { debounce } from "lodash";
 
 const Navbar = () => {
   const location = useLocation();
@@ -29,33 +30,40 @@ const Navbar = () => {
   }, []);
 
   /* control dark mode and save data to local storage */
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    /* store data to local storage */
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+  // useEffect(() => {
+  //   if (theme === "dark") {
+  //     document.documentElement.classList.add("dark");
+  //   } else {
+  //     document.documentElement.classList.remove("dark");
+  //   }
+  //   /* store data to local storage */
+  //   localStorage.setItem("theme", theme);
+  // }, [theme]);
 
   /* update activeNav based on scroll position */
+
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
-    const handleScroll = () => {
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+    const handleScroll = debounce(() => {
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+  
+      document.querySelectorAll("section").forEach((section) => {
+        const offsetTop = section.offsetTop;
+        const offsetBottom = offsetTop + section.offsetHeight;
+  
+        if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
           setActiveNav(`#${section.id}`);
         }
       });
-    };
-
+    }, 100); // Debounce delay to improve performance
+  
     window.addEventListener("scroll", handleScroll);
+  
+    // Cleanup on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  
 
   const navOptions = (
     <>
@@ -63,7 +71,7 @@ const Navbar = () => {
         <HashLink
           smooth
           to="/#home"
-          className={activeNav === "#home" ? "active_link" : ""}
+          className={`nav-item ${activeNav === "#home" ? "active_link" : ""}`}
           onClick={() => setActiveNav("#home")}
         >
           Home
@@ -73,7 +81,9 @@ const Navbar = () => {
         <HashLink
           smooth
           to="/#aboutus"
-          className={activeNav === "#aboutus" ? "active_link" : ""}
+          className={`nav-item ${
+            activeNav === "#aboutus" ? "active_link" : ""
+          }`}
           onClick={() => setActiveNav("#aboutus")}
         >
           About Us
@@ -83,7 +93,9 @@ const Navbar = () => {
         <HashLink
           smooth
           to="/#photography"
-          className={activeNav === "#photography" ? "active_link" : ""}
+          className={`nav-item ${
+            activeNav === "#photography" ? "active_link" : ""
+          }`}
           onClick={() => setActiveNav("#photography")}
         >
           Photography
@@ -93,7 +105,9 @@ const Navbar = () => {
         <HashLink
           smooth
           to="/#contactus"
-          className={activeNav === "#contactus" ? "active_link" : ""}
+          className={`nav-item ${
+            activeNav === "#contactus" ? "active_link" : ""
+          }`}
           onClick={() => setActiveNav("#contactus")}
         >
           Contact Us
@@ -160,7 +174,7 @@ const Navbar = () => {
             {navOptions}
           </ul>
         </div>
-        <div className="navbar-end">
+        {/* <div className="navbar-end">
           <div className="flex justify-center relative w-fit items-center rounded-full">
             <button
               className="toggle_class text-white dark:lg:text-white dark:text-green-500"
@@ -188,7 +202,7 @@ const Navbar = () => {
               ></motion.span>
             </div>
           </div>
-        </div>
+        </div> */}
         <span
           className="absolute bg-gradient-to-r from-green-500 via-yellow-500 to-transparent h-1 w-full bottom-0"
           style={{ transform: `translateX(${completion - 101}%)` }}
