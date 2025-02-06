@@ -22,6 +22,8 @@ const TypingEffect = () => {
         return 'WILDLIFE';
       case '/travelling':
         return 'TRAVELLING';
+      case '/bnb_collection':
+        return 'B&B';
       default:
         return '';
     }

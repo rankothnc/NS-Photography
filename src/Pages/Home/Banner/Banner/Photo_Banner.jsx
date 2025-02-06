@@ -21,6 +21,8 @@ const Photo_Banner = () => {
         return `url(${wildlife})`;
       case "/travelling":
         return `url(${travelling})`;
+      case "/bnb_collection":
+        return `url(${travelling})`;
       case "/":
         return `url(${home})`;
       default:

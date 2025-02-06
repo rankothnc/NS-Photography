@@ -745,7 +745,7 @@ html {
 
   .label a:hover {
     --tw-text-opacity: 1;
-    color: hsl(var(--bc) / var(--tw-text-opacity));
+    color: red;
   }
 
   .menu li > *:not(ul):not(.menu-title):not(details):active,

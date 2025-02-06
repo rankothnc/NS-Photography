@@ -29,18 +29,6 @@ const Navbar = () => {
     };
   }, []);
 
-  /* control dark mode and save data to local storage */
-  // useEffect(() => {
-  //   if (theme === "dark") {
-  //     document.documentElement.classList.add("dark");
-  //   } else {
-  //     document.documentElement.classList.remove("dark");
-  //   }
-  //   /* store data to local storage */
-  //   localStorage.setItem("theme", theme);
-  // }, [theme]);
-
-  /* update activeNav based on scroll position */
 
   useEffect(() => {
     const handleScroll = debounce(() => {
